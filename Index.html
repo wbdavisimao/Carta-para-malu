@@ -152,6 +152,11 @@
                 font-size: 1.1rem;
             }
         }
+
+        /* Estilo do reprodutor de áudio */
+        audio {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -162,13 +167,16 @@
         <div class="heart">&#10084;</div>
         <div class="content">
             <p>Malu, fiz essa carta especialmente pra você. Desde o momento em que te conheci, algo dentro de mim mudou. Não sei explicar, mas sei que, ao teu lado, tudo faz sentido. Você tem uma energia única, que ilumina por completo. Eu sou grato por ter você na minha vida e espero que, a cada dia, possamos compartilhar mais momentos especiais, e que possamos construir algo. Só queria te lembrar o quanto você é importante para mim.</p>
-            <p class="footer">Eu Te amo muito, viu!</p>
+            <p class="footer">Eu te amo muito, viu!</p>
         </div>
     </div>
 </div>
 
-<!-- Música do YouTube - Refrão da música -->
-<iframe width="0" height="0" src="https://www.youtube.com/embed/X1vLfrhPX8U?start=60&autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<!-- Música embutida (Refrão) -->
+<audio id="audio" controls autoplay>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+    Seu navegador não suporta o elemento de áudio.
+</audio>
 
 <script>
     function openCard() {
@@ -181,6 +189,10 @@
 
         // Ativa o efeito de coração pulsando
         heart.style.animation = 'pulseHeart 1.5s ease-in-out infinite';
+
+        // Começa a música
+        const audio = document.getElementById('audio');
+        audio.play();
     }
 </script>
 
