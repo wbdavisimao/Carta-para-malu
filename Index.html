@@ -6,71 +6,118 @@
     <title>Carta para Malu</title>
     <style>
         body {
+            background-color: #f8f0e3;
+            font-family: 'Georgia', serif;
+            margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f4f4f4;
-            margin: 0;
-            font-family: Arial, sans-serif;
+            overflow: hidden;
         }
 
-        .carta {
-            background-color: white;
-            border: 2px solid #ccc;
-            width: 300px;
-            height: 400px;
-            border-radius: 10px;
-            position: relative;
-            padding: 20px;
+        .wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
             text-align: center;
         }
 
-        .carta h1 {
-            margin-top: 100px;
-            font-size: 24px;
+        h1 {
+            font-size: 3rem;
+            color: #e92f5d;
+            font-weight: bold;
+            margin-bottom: 20px;
         }
 
-        .coracao {
-            font-size: 50px;
-            color: red;
-            cursor: pointer;
-            transition: transform 0.2s;
+        .card {
+            position: relative;
+            width: 300px;
+            height: 400px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transform-origin: top;
+            animation: openCard 2s ease-in-out forwards;
         }
 
-        .coracao:hover {
-            transform: scale(1.1);
+        .card .heart {
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3rem;
+            color: #e92f5d;
+            opacity: 0;
+            animation: pulseHeart 1.5s ease-in-out infinite;
         }
 
-        .mensagem {
-            display: none;
-            margin-top: 20px;
-            font-size: 18px;
-            color: #555;
-            text-align: left;
+        .card .content {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.2rem;
+            color: #333;
+            padding: 0 20px;
+            line-height: 1.6;
+            opacity: 0;
+            animation: revealText 2s 2s forwards;
         }
 
-        .mensagem p {
-            margin: 10px 0;
+        @keyframes openCard {
+            0% {
+                transform: rotateX(90deg);
+            }
+            100% {
+                transform: rotateX(0deg);
+            }
+        }
+
+        @keyframes pulseHeart {
+            0%, 100% {
+                opacity: 0;
+                transform: translateX(-50%) scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: translateX(-50%) scale(1.2);
+            }
+        }
+
+        @keyframes revealText {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
-    <div class="carta">
-        <h1>Carta para Malu</h1>
-        <div class="coracao" onclick="mostrarMensagem()">❤️</div>
-        <div class="mensagem">
-            <p>Malu, fiz essa carta especialmente pra você.</p>
-            <p>Desde o momento em que te conheci, algo dentro de mim mudou. Não sei explicar, mas sei que, ao teu lado, tudo faz sentido.</p>
-            <p>Você tem uma energia única, que ilumina por completo. Eu sou grato por ter você na minha vida e espero que, a cada dia, possamos compartilhar mais momentos especiais, e que possamos construir algo.</p>
-            <p>Só queria te lembrar o quanto você é importante para mim. Te amo mt viu!</p>
+
+<div class="wrapper">
+    <h1>Carta para Malu</h1>
+    <div class="card">
+        <div class="heart">&#10084;</div>
+        <div class="content">
+            Malu, fiz essa carta especialmente pra você. Desde o momento em que te conheci, algo dentro de mim mudou. Não sei explicar, mas sei que, ao teu lado, tudo faz sentido. Você tem uma energia única, que ilumina por completo. Eu sou grato por ter você na minha vida e espero que, a cada dia, possamos compartilhar mais momentos especiais, e que possamos construir algo. Só queria te lembrar o quanto você é importante para mim. Te amo mt viu!
         </div>
     </div>
+</div>
 
-    <script>
-        function mostrarMensagem() {
-            document.querySelector('.mensagem').style.display = 'block';
-        }
-    </script>
+<script>
+    document.querySelector('.card').addEventListener('click', function() {
+        const content = document.querySelector('.content');
+        content.style.opacity = '1';
+        content.style.transform = 'translateY(0)';
+    });
+</script>
+
 </body>
 </html>
