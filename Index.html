@@ -30,7 +30,7 @@
         }
 
         h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             color: #e92f5d;
             margin-bottom: 30px;
             animation: fadeIn 2s ease-in-out forwards;
@@ -38,8 +38,9 @@
 
         .card {
             position: relative;
-            width: 350px;
-            height: 500px;
+            width: 90%;
+            max-width: 400px;
+            height: 450px;
             background: linear-gradient(145deg, #f8e4f3, #fce4ec);
             border-radius: 20px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -51,6 +52,7 @@
             cursor: pointer;
             overflow: hidden;
             transform-origin: top;
+            padding: 20px;
         }
 
         .heart {
@@ -66,17 +68,30 @@
 
         .content {
             position: relative;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: #333;
-            padding: 20px;
             line-height: 1.6;
+            max-width: 90%;
+            margin: 0;
             opacity: 0;
             transform: translateY(30px);
             animation: revealText 3s 1s forwards;
-            max-width: 90%;
             font-family: 'Georgia', serif;
             text-align: justify;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            height: 100%;
+        }
+
+        .content p {
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #e92f5d;
+            margin-top: 30px;
         }
 
         @keyframes fadeIn {
@@ -120,6 +135,26 @@
                 transform: translateY(0);
             }
         }
+
+        /* Responsividade */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .card {
+                width: 90%;
+                height: auto;
+            }
+
+            .heart {
+                font-size: 3rem;
+            }
+
+            .content {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -129,7 +164,8 @@
     <div class="card" onclick="revealText()">
         <div class="heart">&#10084;</div>
         <div class="content">
-            Malu, fiz essa carta especialmente pra você. Desde o momento em que te conheci, algo dentro de mim mudou. Não sei explicar, mas sei que, ao teu lado, tudo faz sentido. Você tem uma energia única, que ilumina por completo. Eu sou grato por ter você na minha vida e espero que, a cada dia, possamos compartilhar mais momentos especiais, e que possamos construir algo. Só queria te lembrar o quanto você é importante para mim. Te amo mt viu!
+            <p>Malu, fiz essa carta especialmente pra você. Desde o momento em que te conheci, algo dentro de mim mudou. Não sei explicar, mas sei que, ao teu lado, tudo faz sentido. Você tem uma energia única, que ilumina por completo. Eu sou grato por ter você na minha vida e espero que, a cada dia, possamos compartilhar mais momentos especiais, e que possamos construir algo. Só queria te lembrar o quanto você é importante para mim.</p>
+            <p class="footer">Te amo mt, viu!</p>
         </div>
     </div>
 </div>
