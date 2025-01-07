@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carta Especial para Malu</title>
+    <title>Carta para Malu</title>
     <style>
         * {
             margin: 0;
@@ -12,45 +12,47 @@
         }
 
         body {
-            background-color: #fce4ec;
-            font-family: 'Georgia', serif;
+            background-color: #f4d5d9;
+            font-family: 'Dancing Script', cursive, sans-serif;
             color: #333;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             overflow: hidden;
-            background-image: linear-gradient(to top, #f8bbd0, #fce4ec);
-            background-size: cover;
+            background-image: url('https://www.transparenttextures.com/patterns/diamond-weave.png');
+            background-size: 60px 60px;
             background-attachment: fixed;
         }
 
         .container {
             text-align: center;
-            animation: fadeIn 1.5s ease-in-out;
         }
 
         h1 {
-            font-size: 4rem;
-            color: #e91e63;
-            margin-bottom: 40px;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+            font-size: 3.5rem;
+            color: #e92f5d;
+            margin-bottom: 30px;
+            animation: fadeIn 2s ease-in-out forwards;
         }
 
         .card {
             position: relative;
-            width: 80%;
-            max-width: 450px;
-            height: 500px;
+            width: 90%;
+            max-width: 400px;
+            height: 450px;
             background: linear-gradient(145deg, #f8e4f3, #fce4ec);
-            border-radius: 30px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             transform-style: preserve-3d;
+            animation: openCard 3s ease-out forwards;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             cursor: pointer;
-            transform-origin: center;
-            padding: 30px;
             overflow: hidden;
-            animation: openCard 4s ease-out forwards;
+            transform-origin: top;
+            padding: 20px;
         }
 
         .heart {
@@ -58,17 +60,17 @@
             top: 10%;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 6rem;
-            color: #e91e63;
+            font-size: 4rem;
+            color: #e92f5d;
             opacity: 0;
             animation: pulseHeart 1.5s ease-in-out infinite;
         }
 
         .content {
             position: relative;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: #333;
-            line-height: 1.8;
+            line-height: 1.6;
             max-width: 90%;
             margin: 0;
             opacity: 0;
@@ -76,25 +78,26 @@
             animation: revealText 3s 1s forwards;
             font-family: 'Georgia', serif;
             text-align: justify;
-            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
             height: 100%;
         }
 
         .content p {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .footer {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: bold;
-            color: #e91e63;
-            margin-top: 40px;
+            color: #e92f5d;
+            margin-top: 30px;
         }
 
         @keyframes fadeIn {
             0% {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(20px);
             }
             100% {
                 opacity: 1;
@@ -113,11 +116,11 @@
 
         @keyframes pulseHeart {
             0%, 100% {
-                opacity: 1;
+                opacity: 0;
                 transform: translateX(-50%) scale(1);
             }
             50% {
-                opacity: 0.8;
+                opacity: 1;
                 transform: translateX(-50%) scale(1.3);
             }
         }
@@ -136,7 +139,7 @@
         /* Responsividade */
         @media (max-width: 480px) {
             h1 {
-                font-size: 3rem;
+                font-size: 2.5rem;
             }
 
             .card {
@@ -145,17 +148,12 @@
             }
 
             .heart {
-                font-size: 4rem;
+                font-size: 3rem;
             }
 
             .content {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
-        }
-
-        /* Estilo do reprodutor de áudio */
-        audio {
-            display: none;
         }
     </style>
 </head>
@@ -163,36 +161,20 @@
 
 <div class="container">
     <h1>Carta Especial para Malu</h1>
-    <div class="card" onclick="openCard()">
+    <div class="card" onclick="revealText()">
         <div class="heart">&#10084;</div>
         <div class="content">
             <p>Malu, fiz essa carta especialmente pra você. Desde o momento em que te conheci, algo dentro de mim mudou. Não sei explicar, mas sei que, ao teu lado, tudo faz sentido. Você tem uma energia única, que ilumina por completo. Eu sou grato por ter você na minha vida e espero que, a cada dia, possamos compartilhar mais momentos especiais, e que possamos construir algo. Só queria te lembrar o quanto você é importante para mim.</p>
-            <p class="footer">Eu te amo muito, viu!</p>
+            <p class="footer">Eu Te amo muito, viu!</p>
         </div>
     </div>
 </div>
 
-<!-- Música embutida (Refrão) -->
-<audio id="audio" controls autoplay>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
-    Seu navegador não suporta o elemento de áudio.
-</audio>
-
 <script>
-    function openCard() {
+    function revealText() {
         const content = document.querySelector('.content');
-        const heart = document.querySelector('.heart');
-        
-        // Exibe o texto da carta com animação suave
         content.style.opacity = '1';
         content.style.transform = 'translateY(0)';
-
-        // Ativa o efeito de coração pulsando
-        heart.style.animation = 'pulseHeart 1.5s ease-in-out infinite';
-
-        // Começa a música
-        const audio = document.getElementById('audio');
-        audio.play();
     }
 </script>
 
