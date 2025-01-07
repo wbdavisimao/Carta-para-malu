@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carta para Malu</title>
+    <title>Carta para Malu com Música e Efeitos</title>
     <style>
         * {
             margin: 0;
@@ -116,11 +116,11 @@
 
         @keyframes pulseHeart {
             0%, 100% {
-                opacity: 0;
+                opacity: 1;
                 transform: translateX(-50%) scale(1);
             }
             50% {
-                opacity: 1;
+                opacity: 0.6;
                 transform: translateX(-50%) scale(1.3);
             }
         }
@@ -161,20 +161,37 @@
 
 <div class="container">
     <h1>Carta Especial para Malu</h1>
-    <div class="card" onclick="revealText()">
+    <div class="card" onclick="openCard()">
         <div class="heart">&#10084;</div>
         <div class="content">
             <p>Malu, fiz essa carta especialmente pra você. Desde o momento em que te conheci, algo dentro de mim mudou. Não sei explicar, mas sei que, ao teu lado, tudo faz sentido. Você tem uma energia única, que ilumina por completo. Eu sou grato por ter você na minha vida e espero que, a cada dia, possamos compartilhar mais momentos especiais, e que possamos construir algo. Só queria te lembrar o quanto você é importante para mim.</p>
-            <p class="footer">Te amo mt, viu!</p>
+            <p class="footer">Eu Te amo muito, viu!</p>
         </div>
     </div>
 </div>
 
+<!-- Música - Refrão da música -->
+<audio id="audio" autoplay>
+    <source src="URL-DA-MÚSICA.mp3" type="audio/mp3">
+    Seu navegador não suporta o elemento de áudio.
+</audio>
+
 <script>
-    function revealText() {
+    function openCard() {
         const content = document.querySelector('.content');
+        const heart = document.querySelector('.heart');
+        
+        // Exibe o texto da carta com a animação
         content.style.opacity = '1';
         content.style.transform = 'translateY(0)';
+
+        // Ativa o efeito do coração pulsando
+        heart.style.animation = 'pulseHeart 1.5s ease-in-out infinite';
+
+        // Começa a música no refrão
+        const audio = document.getElementById('audio');
+        audio.currentTime = 60; // Definindo para o início do refrão (1min)
+        audio.play();
     }
 </script>
 
